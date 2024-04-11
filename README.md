@@ -1,9 +1,24 @@
 # MAO-CLIMB: Curriculum Learning for Infant-inspired Model Building Beyond English
 
 ## Set-up 
-HuggingFace BabyLM Datasets for French, German, Japanese and Chinese 
+HuggingFace BabyLM Datasets for French, German, Japanese and Chinese have been developed and released here:
+
 [BabyLM](https://huggingface.co/datasets/cambridge-climb/BabyLM)
 
+Training logs are stored using Weights & Biases (W&B). This requires two parameters `experiment.group` and `experiment.name` to log runs. 
+
+To train an SSLM for  `fr, de, ja, zh ` run the following command: 
+```
+python train.py experiment.name="japanese-demo-1" experiment.group="suchir-demo" dataset.subconfig="ja_lang_strict_gold"
+```
+
+[Cambridge University HPC Cluster]: The models can be trained using the `wilkes3-gpu` on the Cambridge HPC cluster. Sample HPC scripts are provided in `./scripts`. 
+
+
+To train an SSLM using the HPC, `cd scripts`, and then run the following command in the terminal: 
+```
+sbatch launch_slurm.wilkes3 experiment.name="japanese-demo-1" experiment.group="suchir-demo" dataset.subconfig="ja_lang_strict_gold"
+```
 
 ## 🧗 CLIMB 
 The code is based on the Cambridge University & Collaborator's submission to the [Baby LM Challenge](https://babylm.github.io/) (strict-small track) for **English-based Small-Scale Language Models**. 
