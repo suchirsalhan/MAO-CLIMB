@@ -6,9 +6,10 @@ _DESCRIPTION = """\
 Dataset for the BabyLM Round2: French, German, Chinese & Japanese Small-Scale LMs
 The goal is to train a language model from scratch on this data which represents
 roughly the amount of text and speech data a young child observes.
-Author– Suchir Salhan
+Author– Suchir Salhan
 """
 
+_HOMEPAGE = "https://babylm.github.io"
 
 filenames = [
     "aochildes.txt",
@@ -81,49 +82,49 @@ class BabyLM(datasets.GeneratorBasedBuilder):
             version="1.0.0",
         ),
         datasets.BuilderConfig(
-            name="fr_lang_strict_small",  #FRENCH
+            name="fr_lang_small",  #FRENCH
             description="FRENCH Cleaned version of the dataset, 10M words, unsupervised POS tags",
             version="1.0.0",
         ),
          datasets.BuilderConfig(
-            name="ja_lang_strict_small",
+            name="ja_lang_small",
             description="GERMAN Cleaned version of the dataset, 10M words, unsupervised POS tags",
             version="1.0.0",
         ),
          datasets.BuilderConfig(
-            name="zh_lang_strict_small",
+            name="zh_lang_small",
             description="JAPANESE Cleaned version of the dataset, 10M words, unsupervised POS tags",
             version="1.0.0",
         ),
          datasets.BuilderConfig(
-            name="de_lang_strict_small",
+            name="de_lang_small",
             description="GERMAN Cleaned version of the dataset, 10M words, unsupervised POS tags",
             version="1.0.0",
         ),
         
         datasets.BuilderConfig(
-            name="fr_lang_strict_gold",
+            name="fr_lang_gold",
             description="FRENCH Cleaned version of the dataset, 100M words, gold POS tags",
             version="1.0.0",
         ),
         datasets.BuilderConfig(
-            name="ja_lang_strict_gold",
+            name="ja_lang_gold",
             description="JAPANESE Cleaned version of the dataset, 100M words, gold POS tags",
             version="1.0.0",
         ),
                 datasets.BuilderConfig(
-            name="de_lang_strict_gold",
+            name="de_lang_gold",
             description="GERMAN Cleaned version of the dataset, 100M words, gold POS tags",
             version="1.0.0",
         ),
         datasets.BuilderConfig(
-            name="zh_lang_strict_gold",
+            name="zh_lang_gold",
             description="CHINESE Cleaned version of the dataset, 100M words, gold POS tags",
             version="1.0.0",
         ),
     ]
 
-    DEFAULT_CONFIG_NAME = "strict_small"
+    #DEFAULT_CONFIG_NAME = "strict_small"
 
 
 
@@ -151,18 +152,20 @@ class BabyLM(datasets.GeneratorBasedBuilder):
         Returns data for different splits 
         """
 
-        if "strict_small" in self.config.name: #default settings – English
-            train_data_dir = "10M"
-        elif "fr_lang_strict_small" in self.config.name:
+
+        if "fr_lang_small" in self.config.name:
             train_data_dir = "FR"
-        elif "de_lang_strict_small" in self.config.name:
+        elif "de_lang_small" in self.config.name:
             train_data_dir = "DE"
-        elif "zh_lang_strict_small" in self.config.name:
+        elif "zh_lang_small" in self.config.name:
             train_data_dir = "ZH"
-                elif "ja_lang_strict_small" in self.config.name:
+        elif "ja_lang_small" in self.config.name:
             train_data_dir = "JA"
+        elif "strict_small" in self.config.name: #default settings – English
+            train_data_dir = "10M"
         else: 
             train_data_dir = "100M"
+
 
         folder = 'original_tagged' if 'original' in self.config.name else 'clean_tagged' #
         folder = folder + '_gold' if 'gold' in self.config.name else folder #gold tags for french, german, japanese and english
@@ -176,24 +179,24 @@ class BabyLM(datasets.GeneratorBasedBuilder):
             "test": []
             }
 
-        if 'fr_lang_strict_small' in self.config.name:
-            urls_to_download["train"].append(f"{folder}/{train_data_dir}/aofrench.txt")
+        if 'fr_lang_small' in self.config.name:
+            urls_to_download["train"].append(f"{folder}/FR/aofrench.txt")
             urls_to_download["dev"].append(f"{folder}/dev/aofrench_dev.txt")
             urls_to_download["test"].append(f"{folder}/test/aofrench_test.txt")
-        elif 'de_lang_strict_small' in self.config.name:
-            urls_to_download["train"].append(f"{folder}/{train_data_dir}/aogerman.txt")
+        elif 'de_lang_small' in self.config.name:
+            urls_to_download["train"].append(f"{folder}/DE/aogerman.txt")
             urls_to_download["dev"].append(f"{folder}/dev/aogerman_dev.txt")
             urls_to_download["test"].append(f"{folder}/test/aogerman_test.txt")
-        elif 'zh_lang_strict_small' in self.config.name:
-            urls_to_download["train"].append(f"{folder}/{train_data_dir}/aochinese.txt")
+        elif 'zh_lang_small' in self.config.name:
+            urls_to_download["train"].append(f"{folder}/ZH/aochinese.txt")
             urls_to_download["dev"].append(f"{folder}/dev/aochinese_dev.txt")
             urls_to_download["test"].append(f"{folder}/test/aochinese_test.txt")
-        elif 'ja_lang_strict_small' in self.config.name:
-            urls_to_download["train"].append(f"{folder}/{train_data_dir}/aojapanese.txt")
+        elif 'ja_lang_small' in self.config.name:
+            urls_to_download["train"].append(f"{folder}/JA/aojapanese.txt")
             urls_to_download["dev"].append(f"{folder}/dev/aojapanese_dev.txt")
             urls_to_download["test"].append(f"{folder}/test/aojapanese_test.txt")
         else:
-            urls_to_download["train"] = [f"{folder}/{train_data_dir}/{fn}" for fn in filenames]
+            urls_to_download["train"] = [f"{folder}/10M/{fn}" for fn in filenames]
             urls_to_download["dev"] = [f"{folder}/dev/{fn}" for fn in filenames]
             urls_to_download["test"] = [f"{folder}/test/{fn}" for fn in filenames]
 
