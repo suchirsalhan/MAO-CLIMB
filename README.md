@@ -3,6 +3,13 @@
 ## Set-up 
 HuggingFace BabyLM Datasets for French, German, Japanese and Chinese have been developed and released here:
 
+```
+git clone https://github.com/suchirsalhan/MAO-CLIMB
+python3 -m venv venvs/demo; source venvs/demo/bin/activate
+bash setup.sh
+```
+
+
 [BabyLM](https://huggingface.co/datasets/cambridge-climb/BabyLM)
 
 Training logs are stored using Weights & Biases (W&B). This requires two parameters `experiment.group` and `experiment.name` to log runs. 
