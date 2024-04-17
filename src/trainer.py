@@ -651,7 +651,7 @@ class CustomTrainer(Trainer):
             range(
                 self.args.process_index,  # local process rank
                 self.eval_dataset.num_rows,  # type: ignore
-                self.eval_dataset.num_rows // ((100 if self.dry_run else 10_000) // self.args.world_size),  # type: ignore
+                self.eval_dataset.num_rows // ((100 if self.dry_run else 1_000) // self.args.world_size),  # type: ignore
             )
         )
         logging.info("Evaluating perplexity...")
