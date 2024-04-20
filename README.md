@@ -9,14 +9,21 @@ python3 -m venv venvs/demo; source venvs/demo/bin/activate
 bash setup.sh
 ```
 
-
 [BabyLM](https://huggingface.co/datasets/cambridge-climb/BabyLM)
 
 Training logs are stored using Weights & Biases (W&B). This requires two parameters `experiment.group` and `experiment.name` to log runs. 
 
 To train an SSLM for  `fr, de, ja, zh ` run the following command: 
 ```
-python train.py experiment.name="japanese-demo-1" experiment.group="suchir-demo" dataset.subconfig="ja_lang_strict_gold"
+python train.py experiment.name="japanese-demo-1" experiment.group="suchir-demo" dataset.subconfig="zh_lang_strict_gold" tokenizer.subconfig="zh_cbt"
+```
+
+
+For Dry Runs: 
+
+```
+python train.py experiment.name="japanese-demo-1" experiment.group="suchir-demo" dataset.subconfig="ja_lang_strict_gold" experiment.dry_run=True trainer.max_training_steps=100 trainer.num_warmup_steps=10
+
 ```
 
 [Cambridge University HPC Cluster]: The models can be trained using the `wilkes3-gpu` on the Cambridge HPC cluster. Sample HPC scripts are provided in `./scripts`. 
