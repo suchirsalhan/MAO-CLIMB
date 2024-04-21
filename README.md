@@ -22,7 +22,7 @@ python train.py experiment.name="japanese-demo-1" experiment.group="suchir-demo"
 For Dry Runs: 
 
 ```
-python train.py experiment.name="japanese-demo-1" experiment.group="suchir-demo" dataset.subconfig="ja_lang_strict_gold" experiment.dry_run=True trainer.max_training_steps=100 trainer.num_warmup_steps=10
+python train.py experiment.name="chinese-demo-1" experiment.group="suchir-demo" dataset.subconfig="zh_lang_strict_gold" experiment.dry_run=True trainer.max_training_steps=100 trainer.num_warmup_steps=10
 
 ```
 
