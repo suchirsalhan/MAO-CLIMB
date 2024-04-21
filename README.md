@@ -15,7 +15,7 @@ Training logs are stored using Weights & Biases (W&B). This requires two paramet
 
 To train an SSLM for  `fr, de, ja, zh ` run the following command: 
 ```
-python train.py experiment.name="japanese-demo-1" experiment.group="suchir-demo" dataset.subconfig="zh_lang_strict_gold" tokenizer.subconfig="zh_cbt"
+python train.py experiment.name="chinese-demo-1" experiment.group="suchir-demo" dataset.subconfig="zh_lang_strict_gold" tokenizer.subconfig="zh_cbt"
 ```
 
 
