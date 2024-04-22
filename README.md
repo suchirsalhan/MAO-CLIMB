@@ -1,28 +1,42 @@
 # MAO-CLIMB: Curriculum Learning for Infant-inspired Model Building Beyond English
 
-## Set-up 
+## Training Datasets
+
 HuggingFace BabyLM Datasets for French, German, Japanese and Chinese have been developed and released here:
+
+[BabyLM](https://huggingface.co/datasets/cambridge-climb/BabyLM)
+
+
+| Language  | code  | AO Corpora | Data Curriculum |
+| ------------- | ------------- | ------------- | ------------- |
+| **French** |  fr  | fr_lang_small | fr_lang_strict  |
+| **German** | de  | de_lang_small  | de_lang_strict  |
+| **Chinese** | zh  | zh_lang_small | zh_lang_strict  |
+
+## Set-up 
+
 
 ```
 git clone https://github.com/suchirsalhan/MAO-CLIMB
 python3 -m venv venvs/demo; source venvs/demo/bin/activate
 bash setup.sh
 ```
+This will require being a member of the BabyLM HuggingFace and W&B accounts to provide the correct authorisation keys to log runs. 
 
-[BabyLM](https://huggingface.co/datasets/cambridge-climb/BabyLM)
+
+## Training
 
 Training logs are stored using Weights & Biases (W&B). This requires two parameters `experiment.group` and `experiment.name` to log runs. 
 
 To train an SSLM for  `fr, de, ja, zh ` run the following command: 
 ```
-python train.py experiment.name="chinese-demo-1" experiment.group="suchir-demo" dataset.subconfig="zh_lang_strict_gold" tokenizer.subconfig="zh_cbt"
+python train.py experiment.name="chinese-demo-1" experiment.group="suchir-demo" dataset.subconfig="zh_lang_strict_gold" tokenizer="zh_cbt"
 ```
-
 
 For Dry Runs: 
 
 ```
-python train.py experiment.name="chinese-demo-1" experiment.group="suchir-demo" dataset.subconfig="zh_lang_strict_gold" experiment.dry_run=True trainer.max_training_steps=100 trainer.num_warmup_steps=10
+python train.py experiment.name="chinese-demo-1" experiment.group="suchir-demo" dataset.subconfig="zh_lang_strict_gold" tokenizer="zh_cbt" experiment.dry_run=True trainer.max_training_steps=100 trainer.num_warmup_steps=10
 
 ```
 
@@ -31,8 +45,22 @@ python train.py experiment.name="chinese-demo-1" experiment.group="suchir-demo" 
 
 To train an SSLM using the HPC, `cd scripts`, and then run the following command in the terminal: 
 ```
-sbatch launch_slurm.wilkes3 experiment.name="japanese-demo-1" experiment.group="suchir-demo" dataset.subconfig="ja_lang_strict_gold"
+sbatch launch_slurm.wilkes3  experiment.name="chinese-demo-1" experiment.group="suchir-demo" dataset.subconfig="zh_lang_strict_gold" tokenizer="zh_cbt"
 ```
+
+Example usage on the Interactive Node of the HPC for a Dry Run:
+
+```
+cd scripts
+./launch_interactive.sh
+cd ..
+python train.py experiment.name="chinese-demo-1" experiment.group="suchir-demo" dataset.subconfig="zh_lang_strict_gold" tokenizer="zh_cbt" experiment.dry_run=True trainer.max_training_steps=100 trainer.num_warmup_steps=10
+```
+
+
+## Evaluation
+
+
 
 ## 🧗 CLIMB 
 The code is based on the Cambridge University & Collaborator's submission to the [Baby LM Challenge](https://babylm.github.io/) (strict-small track) for **English-based Small-Scale Language Models**. 
