@@ -8,7 +8,7 @@ HuggingFace BabyLM Datasets for French, German, Japanese and Chinese have been d
 
 
 | Language  | code  | AO Corpora | Data Curriculum | Tokeniser |
-| ------------- | ------------- | ------------- | ------------- |
+| ------------- | ------------- | ------------- | ------------- |------------- |
 | **French** |  `fr`  | `fr_lang_small` | `fr_lang_strict`  |`fr_cbt`  |
 | **German** | `de`  | `de_lang_small`  | `de_lang_strict`  |`de_cbt`  |
 | **Chinese** | `zh`  | `zh_lang_small` | `zh_lang_strict`  |`zh_cbt`  |
