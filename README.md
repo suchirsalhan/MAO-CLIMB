@@ -45,7 +45,10 @@ python train.py experiment.name="chinese-demo-1" experiment.group="suchir-demo" 
 
 To train an SSLM using the HPC, `cd scripts`, and then run the following command in the terminal: 
 ```
-sbatch launch_slurm.wilkes3  experiment.name="chinese-demo-1" experiment.group="suchir-demo" dataset.subconfig="zh_lang_strict_gold" tokenizer="zh_cbt"
+sbatch launch_slurm.wilkes3  experiment.name="chinese-demo-1" experiment.group="suchir-demo" dataset.subconfig="zh_lang_small" tokenizer="zh_cbt"
+sbatch launch_slurm.wilkes3  experiment.name="german-demo-1" experiment.group="suchir-demo" dataset.subconfig="de_lang_small" tokenizer="de_cbt"
+sbatch launch_slurm.wilkes3  experiment.name="french-demo-1" experiment.group="suchir-demo" dataset.subconfig="fr_lang_small" tokenizer="fr_cbt"
+
 ```
 
 Example usage on the Interactive Node of the HPC for a Dry Run:
