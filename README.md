@@ -17,13 +17,18 @@ Training logs are stored using Weights & Biases (W&B). This requires two paramet
 
 To train an SSLM for  `fr, de, ja, zh ` run the following command: 
 ```
-python train.py experiment.name="chinese-demo-1" experiment.group="suchir-demo" dataset.subconfig="zh_lang_strict_gold" tokenizer="zh_cbt"
+python train.py experiment.name="chinese-demo-1" experiment.group="suchir-demo" dataset.subconfig="zh_lang_small" tokenizer="zh_cbt"
+```
+
+**IMPORTANT:** For `cat, ron`, the vocabulary sizes are slightly smaller. Specify this as follows: 
+```
+python train.py experiment.name="chinese-demo-1" experiment.group="suchir-demo" dataset.subconfig="zh_lang_small" tokenizer="zh_cbt"
 ```
 
 For Dry Runs: 
 
 ```
-python train.py experiment.name="chinese-demo-1" experiment.group="suchir-demo" dataset.subconfig="zh_lang_strict_gold" tokenizer="zh_cbt" experiment.dry_run=True trainer.max_training_steps=100 trainer.num_warmup_steps=10
+python train.py experiment.name="chinese-demo-1" experiment.group="suchir-demo" dataset.subconfig="zh_lang_small" tokenizer="zh_cbt" experiment.dry_run=True trainer.max_training_steps=100 trainer.num_warmup_steps=10
 
 ```
 
