@@ -33,8 +33,11 @@ POS_TAG_MAP = {
     "SCONJ":16,
     "SYM":17,
     "PUNCT":18,
-    "AUX":19
+    "AUX":19,
+    "PART":20,
+    "ADP":21
 }
+
 
 def base_collate_fn(_samples: List[Dict[str, List[Tuple[int, float]]]]):
     joined_batch = defaultdict(list)
