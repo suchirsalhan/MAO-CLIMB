@@ -7,11 +7,6 @@ if [ ! -d "env" ]; then
 	virtualenv -p python3.9 env
 	source env/bin/activate
 	git lfs install
-	git submodule update --init
-	cd lib/evaluation-pipeline
-	unzip filter_data.zip
-	pip install -e ".[dev]"
-	cd ../..
 	pip install -r requirements.txt
 	pip install torch==1.12.0+cu113 torchvision==0.13.0+cu113 torchaudio==0.12.0 --extra-index-url https://download.pytorch.org/whl/cu113
 	pre-commit install
