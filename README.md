@@ -1,5 +1,8 @@
 # MAO-CLIMB: Curriculum Learning for Infant-inspired Model Building Beyond English
 
+Cognitively-Plausible Small-Scale Language Models trained using developmentally-plausible corpora of Child-Directed Speech, and a series of universal and language-specific objective curricula.
+
+
 ## Set-up 
 
 
@@ -8,8 +11,12 @@ git clone https://github.com/suchirsalhan/MAO-CLIMB
 python3 -m venv venvs/demo; source venvs/demo/bin/activate
 bash setup.sh
 ```
-This will require being a member of the BabyLM HuggingFace and W&B accounts to provide the correct authorisation keys to log runs. 
+This will require being a member of the BabyLM HuggingFace and W&B accounts to provide the correct authorisation keys to log runs. Save HuggingFace Read and Write Tokens as follows in `.env`: 
+```
+export HF_READ_TOKEN= [insert]
+export HF_WRITE_TOKEN= [insert]
 
+```
 
 ## Training
 
@@ -31,6 +38,42 @@ For Dry Runs:
 python train.py experiment.name="chinese-demo-1" experiment.group="suchir-demo" dataset.subconfig="zh_lang_small" tokenizer="zh_cbt" experiment.dry_run=True trainer.max_training_steps=100 trainer.num_warmup_steps=10
 
 ```
+
+## Bubbles
+
+
+To train an SSLM using the HPC, `cd scripts`, and then run the following command in the terminal: 
+```
+sh launch_torchrun.sh experiment.name="chinese-demo-1" experiment.group="suchir-demo" ...
+```
+
+Note the following changes to the `setup.sh`. 
+
+```
+# module rm rhel7/global
+# module rm rhel7/default-gpu
+
+if [ ! -d "env" ]; then
+        # module load python-3.9.6-gcc-5.4.0-sbr552h
+        export TMPDIR='/var/tmp'
+        virtualenv -p python3 env
+        source env/bin/activate
+        git lfs install
+        pip install -r requirements.txt
+        pip install torch==1.12.0+cu113 torchvision==0.13.0+cu113 torchaudio==0.12.0 --extra-index-url https://download.pytorch.org/whl/cu113
+        pre-commit install
+        huggingface-cli login
+        wandb login
+else
+        source env/bin/activate
+fi
+source .env
+
+
+export PATH="$(pwd)/lib/bin:$PATH"
+```
+
+## HPC
 
 [Cambridge University HPC Cluster]: The models can be trained using the `wilkes3-gpu` on the Cambridge HPC cluster. Sample HPC scripts are provided in `./scripts`. 
 
