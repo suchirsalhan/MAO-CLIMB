@@ -1,0 +1,20 @@
+defaults:
+  - units:
+    - pos_noun_verb
+    - pos_s1
+    - pos_s2
+    - pos_all
+    - pos_sem1
+    - pos_sem2
+    - mlm
+
+
+steps: {
+  "pos_noun_verb": [0.0,0.20],
+  "pos_s1": [0.20,0.40],
+  "pos_s2": [0.40,0.60],
+  "pos_all": [0.60,0.70],
+  "pos_sem1": [0.70,0.85],
+  "pos_sem2": [0.85,1.0],
+  "mlm": [0.0,1.0],
+}
