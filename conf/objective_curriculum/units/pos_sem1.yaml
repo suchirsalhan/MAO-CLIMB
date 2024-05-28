@@ -1,0 +1,14 @@
+pos_sem1: 
+  task_head_params: {}
+
+  optimizer_params: { 
+    "lr": 1e-3,
+  }
+
+  scheduler_params: {}
+
+  optional_kwargs: { 
+    "pos_tags": ["NOUN", "VERB", "ADJ", "ADV", "PRON", "DET", "ADP", "NUM", "CONJ", "PRT", ".","X","INTJ","PROPN","ADP","CCONJ","SCONJ","SYM","PUNCT","AUX","PART","ADP","PRO", "DEF", "HAS", "REF", "EMP", "GRE", "ITJ", "HES", "QUE", "QUA", "UOM", "IST", "REL", "RLI", "SST", "PRI", "INT", "SCO", "ALT", "EXC", "NIL", "DIS", "IMP", "AND", "BUT", "EQA", "MOR", "LES", "TOP", "BOT", "ORD", "PRX", "MED", "DST", "SUB", "COO", "APP", "NOT", "NEC", "POS", "CON", "ROL", "ENS", "EPS", "EFS", "EXG", "ENG", "EPG", "EFG", "EXT", "ENT", "EPT", "EFT", "ETG", "ETV", "EXV", "NOW", "PST", "FUT", "MAN", "RES", "AIM", "OBJ", "COM"],
+    "mask_probability_pos": 0.4,
+    "mask_probability_other": 0.15,
+  }
