@@ -145,23 +145,22 @@ Additionally, MAO-CHILDES corpora have been developed for low(er)-resourced lang
 
 
 ## 🧗 CLIMB 
-The code is based on the Cambridge University & Collaborator's submission to the [Baby LM Challenge](https://babylm.github.io/) (strict-small track) for **English-based Small-Scale Language Models**. 
+The code extends Cambridge University & Collaborator's submission to the [Baby LM Challenge](https://babylm.github.io/) (strict-small track) for **English-based Small-Scale Language Models**. 
 
-## Acknowledgements
+## Citation
 
-Martinez, R. D., McGovern, H., Goriely, Z., Davis, C., Caines, A., Buttery, P., & Beinborn, L. (2023, December). CLIMB–Curriculum Learning for Infant-inspired Model Building. In Proceedings of the BabyLM Challenge at the 27th Conference on Computational Natural Language Learning (pp. 112-127).
+If you find the code or ideas behind the paper useful, please consider citing our paper. 
+
+Salhan, S.A., Martinez, R. D.,  Goriely, Z., & Buttery, P. (2024, November). Less is More: Pre-Training Cross-Lingual Small-Scale Language Models with Cognitively-Plausible Curriculum Learning Strategies. In Proceedings of the BabyLM Challenge at the 28th Conference on Computational Natural Language Learning (pp. 112-127).
 
 
 ```
-@inproceedings{martinez-etal-2023-climb,
-    title = "{CLIMB} {--} Curriculum Learning for Infant-inspired Model Building",
-    author = "Martinez, Richard Diehl  and
-      McGovern, Hope  and
+@inproceedings{salhan-etal-2024-less,
+    title = " Less is More: Pre-Training Cross-Lingual Small-Scale Language Models with Cognitively-Plausible Curriculum Learning Strategies",
+    author = "Salhan, Suchir  and
+      Diehl Martinez, Richard
       Goriely, Zebulon  and
-      Davis, Christopher  and
-      Caines, Andrew  and
-      Buttery, Paula  and
-      Beinborn, Lisa",
+      Buttery, Paula",
     editor = "Warstadt, Alex  and
       Mueller, Aaron  and
       Choshen, Leshem  and
@@ -173,12 +172,13 @@ Martinez, R. D., McGovern, H., Goriely, Z., Davis, C., Caines, A., Buttery, P., 
       Williams, Adina  and
       Linzen, Tal  and
       Cotterell, Ryan",
-    booktitle = "Proceedings of the BabyLM Challenge at the 27th Conference on Computational Natural Language Learning",
-    month = dec,
-    year = "2023",
-    address = "Singapore",
+    booktitle = "Proceedings of the BabyLM Challenge at the 28th Conference on Computational Natural Language Learning",
+    month = nov,
+    year = "2024",
+    address = "Miami",
     publisher = "Association for Computational Linguistics",
     url = "https://aclanthology.org/2023.conll-babylm.10",
     doi = "10.18653/v1/2023.conll-babylm.10",
     pages = "112--127",
 }```
+
